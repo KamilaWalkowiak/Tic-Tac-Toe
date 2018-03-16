@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import Board from './Board'
 
-class Square extends Component {
+class Square extends PureComponent {
     render() {
         return (
             <div className="game">

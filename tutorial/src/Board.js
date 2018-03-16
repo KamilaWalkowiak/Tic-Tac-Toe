@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import Square from './Square'
 
-class Board extends Component {
+class Board extends PureComponent {
 
     constructor(props) {
         super(props);
