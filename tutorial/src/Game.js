@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import Board from './Board'
+import './Game.css';
 
 class Square extends PureComponent {
 
