@@ -16,8 +16,11 @@ class Square extends PureComponent {
 
     handleClick(i) {
         const history = this.state.history;
+        console.log('1',history);
         const current = history[history.length - 1];
+        console.log(current);
         const squares = current.squares.slice();
+        console.log(squares);
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -27,7 +30,7 @@ class Square extends PureComponent {
                 squares: squares,
             }]),
             xIsNext: !this.state.xIsNext,
-        });
+        }, () => {console.log('2',this.state.history)});
     }
 
     render() {
@@ -35,6 +38,16 @@ class Square extends PureComponent {
         const history = this.state.history;
         const current = history[history.length - 1];
         const winner = calculateWinner(current.squares);
+        const moves = history.map((step, move) => {
+            const desc = move ?
+                'Go to move #' + move :
+                'Go to game start';
+            return (
+                <li>
+                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                </li>
+            );
+        });
 
         let status;
         if (winner) {
@@ -53,7 +66,7 @@ class Square extends PureComponent {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{/* TODO */}</ol>
+                    <ol>{moves}</ol>
                 </div>
             </div>
         );
